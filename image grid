@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Gridview Example',
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  final List<String> images = [    'https://picsum.photos/id/1018/250/250',    'https://picsum.photos/id/1025/250/250',    'https://picsum.photos/id/1039/250/250',    'https://picsum.photos/id/1051/250/250',    'https://picsum.photos/id/1069/250/250',    'https://picsum.photos/id/1083/250/250',    'https://picsum.photos/id/109/250/250',    'https://picsum.photos/id/110/250/250',    'https://picsum.photos/id/111/250/250',    'https://picsum.photos/id/112/250/250',    'https://picsum.photos/id/113/250/250',    'https://picsum.photos/id/114/250/250',  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Image Grid'),
+      ),
+      body: GridView.builder(
+        itemCount: images.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          return Image.network(
+            images[index],
+            fit: BoxFit.cover,
+          );
+        },
+      ),
+    );
+  }
+}
