@@ -6,7 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter On Tap Routing Example',
+      title: 'Flutter On Button Tap Routing Example',
       home: HomeScreen(),
       routes: {
         '/first': (context) => FirstScreen(),
@@ -24,8 +24,8 @@ class HomeScreen extends StatelessWidget {
         title: Text('Home Screen'),
       ),
       body: Center(
-        child: GestureDetector(
-          onTap: () {
+        child: ElevatedButton(
+          onPressed: () {
             Navigator.pushNamed(context, '/first');
           },
           child: Text(
@@ -46,8 +46,8 @@ class FirstScreen extends StatelessWidget {
         title: Text('First Screen'),
       ),
       body: Center(
-        child: GestureDetector(
-          onTap: () {
+        child: ElevatedButton(
+          onPressed: () {
             Navigator.pushNamed(context, '/second');
           },
           child: Text(
@@ -68,8 +68,8 @@ class SecondScreen extends StatelessWidget {
         title: Text('Second Screen'),
       ),
       body: Center(
-        child: GestureDetector(
-          onTap: () {
+        child: ElevatedButton(
+          onPressed: () {
             Navigator.popUntil(context, ModalRoute.withName('/'));
           },
           child: Text(
