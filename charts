@@ -1,0 +1,85 @@
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+class BarChartModel {
+String year;
+int financial;
+final charts.Color color;
+BarChartModel({
+required this.year,
+required this.financial,
+required this.color,
+});
+}
+
+class arsenalgoal extends StatelessWidget {
+arsenalgoal({Key? key}) : super(key: key);
+final List<BarChartModel> data = [
+BarChartModel(
+year: "Bukayo Saka",
+financial: 9,
+color: charts.ColorUtil.fromDartColor(Colors.blueGrey),
+),
+BarChartModel(
+year: "Eddie Nketiah",
+financial: 9,
+color: charts.ColorUtil.fromDartColor(Colors.red),
+),
+BarChartModel(
+year: "Martin Ødegaard",
+financial: 8,
+color: charts.ColorUtil.fromDartColor(Colors.green),
+),
+];
+@override
+Widget build(BuildContext context) {
+List<charts.Series<BarChartModel, String>> series = [
+charts.Series(
+id: "financial",
+data: data,
+domainFn: (BarChartModel series, _) => series.year,
+measureFn: (BarChartModel series, _) => series.financial,
+colorFn: (BarChartModel series, _) => series.color,
+),
+];
+return Scaffold(
+body: Container(
+padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+child: charts.BarChart(
+series,
+animate: true,
+),
+),
+);
+}
+}
+
+#PIE CHART
+
+import 'package:flutter/material.dart';
+import "package:fl_chart/fl_chart.dart";
+class Pie_Chart extends StatelessWidget {
+const Pie_Chart({Key? key}) : super(key: key);
+@override
+Widget build(BuildContext context) {
+return MaterialApp(
+home: Scaffold(
+appBar: AppBar(title: Text("Pie Charts"),
+),
+body: Container(
+margin: EdgeInsets.all(10),
+child: PieChart(
+PieChartData(
+sections: [
+PieChartSectionData(value: 35, color: Colors.purple, radius: 100),
+PieChartSectionData(value: 40, color: Colors.amber, radius: 100),
+PieChartSectionData(value: 55, color: Colors.green, radius: 100),
+PieChartSectionData(value: 70, color: Colors.orange, radius: 100),
+]
+)
+)
+),
+),
+);
+}
+}
